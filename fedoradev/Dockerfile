@@ -36,4 +36,3 @@ RUN dnf --nogpgcheck --refresh -y install \
         /usr/bin/wol \
         /usr/bin/xmms \
         /usr/bin/zopflipng
-

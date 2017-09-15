@@ -13,4 +13,3 @@ RUN sed -i -e /tsflags=nodocs/d /etc/yum.conf \
         dejagnu \
         tcllib \
         /usr/bin/xvfb-run /usr/bin/which
-
