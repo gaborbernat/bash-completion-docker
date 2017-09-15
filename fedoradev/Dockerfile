@@ -1,0 +1,39 @@
+FROM fedora:rawhide
+
+# TODO: more coverage
+# --nogpgcheck: Ignore transient(?) package signature failures
+RUN dnf --nogpgcheck --refresh -y install \
+        autoconf \
+        automake \
+        dejagnu \
+        tcllib \
+        /usr/bin/xvfb-run \
+    && \
+    dnf --nogpgcheck -y install \
+        /usr/bin/checksec \
+        /usr/bin/compare \
+        /usr/bin/dcop \
+        /usr/sbin/ether-wake \
+        /usr/bin/g77 \
+        /usr/sbin/hping2 \
+        /usr/bin/koji \
+        /usr/bin/lua \
+        /usr/bin/luac \
+        /usr/sbin/mii-diag \
+        /usr/bin/mock \
+        /usr/bin/msynctool \
+        /usr/bin/mutt \
+        /usr/bin/ncftp \
+        /usr/bin/phing \
+        /usr/bin/plague-client \
+        /usr/bin/pngfix \
+        /usr/bin/pyvenv \
+        /usr/bin/snownews \
+        /usr/bin/stream \
+        /usr/bin/svk \
+        /usr/sbin/tipc \
+        /usr/bin/wine \
+        /usr/bin/wol \
+        /usr/bin/xmms \
+        /usr/bin/zopflipng
+

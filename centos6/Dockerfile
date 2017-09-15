@@ -1,0 +1,16 @@
+FROM centos:6
+
+# TODO: more coverage
+# /usr/bin/which: https://bugzilla.redhat.com/show_bug.cgi?id=1443357
+RUN sed -i -e /tsflags=nodocs/d /etc/yum.conf \
+    && \
+    yum -y install \
+        https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm \
+    && \
+    yum -y install \
+        autoconf \
+        automake \
+        dejagnu \
+        tcllib \
+        /usr/bin/xvfb-run /usr/bin/which
+
