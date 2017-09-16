@@ -218,4 +218,6 @@ RUN dpkg --add-architecture i386 \
         yum-utils \
         zopfli \
     && \
+    rm -rf /var/lib/apt/lists/* \
+    && \
     npm install -g jshint

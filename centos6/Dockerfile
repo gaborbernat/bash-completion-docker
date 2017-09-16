@@ -12,4 +12,6 @@ RUN sed -i -e /tsflags=nodocs/d /etc/yum.conf \
         automake \
         dejagnu \
         tcllib \
-        /usr/bin/xvfb-run /usr/bin/which
+        /usr/bin/xvfb-run /usr/bin/which \
+    && \
+    yum -y clean all

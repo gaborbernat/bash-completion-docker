@@ -35,4 +35,6 @@ RUN dnf --nogpgcheck --refresh -y install \
         /usr/bin/wine \
         /usr/bin/wol \
         /usr/bin/xmms \
-        /usr/bin/zopflipng
+        /usr/bin/zopflipng \
+    && \
+    dnf -y clean all
