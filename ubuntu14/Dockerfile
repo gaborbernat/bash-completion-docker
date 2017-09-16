@@ -220,4 +220,6 @@ RUN dpkg --add-architecture i386 \
     && \
     rm -rf /var/lib/apt/lists/* \
     && \
-    npm install -g jshint
+    npm install -g jshint \
+    && \
+    npm cache clean
