@@ -1,40 +1,17 @@
 FROM fedora:rawhide
 
-# TODO: more coverage
-# --nogpgcheck: Ignore transient(?) package signature failures
-RUN dnf --nogpgcheck --refresh -y install \
-        autoconf \
-        automake \
-        dejagnu \
-        tcllib \
+RUN echo install_weak_deps=False >> /etc/dnf/dnf.conf && \
+    dnf --refresh -y install \
+        /usr/bin/autoconf \
+        /usr/bin/automake \
+        /usr/bin/make \
         /usr/bin/xvfb-run \
-    && \
-    dnf --nogpgcheck -y install \
-        /usr/bin/checksec \
-        /usr/bin/compare \
-        /usr/bin/dcop \
-        /usr/sbin/ether-wake \
-        /usr/bin/g77 \
-        /usr/sbin/hping2 \
-        /usr/bin/koji \
-        /usr/bin/lua \
-        /usr/bin/luac \
-        /usr/sbin/mii-diag \
-        /usr/bin/mock \
-        /usr/bin/msynctool \
-        /usr/bin/mutt \
-        /usr/bin/ncftp \
-        /usr/bin/phing \
-        /usr/bin/plague-client \
-        /usr/bin/pngfix \
-        /usr/bin/pyvenv \
-        /usr/bin/snownews \
-        /usr/bin/stream \
-        /usr/bin/svk \
-        /usr/sbin/tipc \
-        /usr/bin/wine \
-        /usr/bin/wol \
-        /usr/bin/xmms \
-        /usr/bin/zopflipng \
-    && \
-    dnf -y clean all
+        dejagnu \
+        tcllib
+
+ADD https://raw.githubusercontent.com/scop/bash-completion/master/completions/Makefile.am /tmp/cache-buster
+COPY install-packages.sh /tmp
+
+RUN /tmp/install-packages.sh && \
+    rm /tmp/install-packages.sh /tmp/cache-buster && \
+    dnf -Cy clean all
