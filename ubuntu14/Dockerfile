@@ -169,6 +169,7 @@ RUN dpkg --add-architecture i386 \
         pylint \
         python-flake8 \
         python-pytest \
+        python-tox \
         python3 \
         quota \
         rcs \
